@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-align: none;
+    color:black;
+}
+
+ul{
+    list-style-type: none;
+}
+
+body{
+    background-color: azure;
+}
+
+.showArea{
+    width: 601px;
+    height: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 40px 1fr;
+    border-radius: 10px;
+    background-color: rgb(15, 127, 219);
+}
+
+.showArea .title{
+    width: 601px;
+    text-align: center;
+    background-color: rgba(175, 33, 226, 0.661);
+    padding: 3px;
+    border-radius: 10px 10px 0 0;
+    display: none;
+}
+
+.showArea .title button{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: white;
+    color: #BBB;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.showArea .title button:hover{
+    cursor: pointer;
+    background-color: coral;
+    color: white;
+}
+
+
+.showArea .title>span{
+    letter-spacing: 5px;
+    font-size: 25px;
+    color:white;
+}
+
+.displayArea{
+    position: relative;
+}
+
+.displayArea .msgIcon{
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 65px;
+    text-align: center;
+    color: #e1e1e1;
+    position: absolute;
+    margin-top: 300px;
+    right: 0;
+    margin-right: 10px;
+    /* 测试先关闭 */
+    /* display: none; */
+}
+
+.displayArea .msgIcon:hover{
+    cursor: pointer;
+    color:coral;
+}
+
+.msgDisplay{
+    border: 0.5px solid black;
+    border-radius: 0 0 10px 10px;
+    display: grid;
+    grid-template-rows: 400px 1fr;
+    display: none;
+}
+
+.msgDisplay .msgShow{
+    background-color: #fefefe;
+}
+
+.msgDisplay .msgInput textarea{
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-top: 1px solid #eee;
+    border-radius: 0 0 10px 10px;
+    resize: none;
+    width: 600px;
+    height: 160px;
+}
+
+.msgDisplay .msgShow{
+    padding: 10px;
+    overflow: auto;
+}
+.msgDisplay .msgShow img{
+    width: 50px;
+    height: 50px;
+    vertical-align:middle;
+    border-radius: 10px;
+}
+
+.msgDisplay .msgShow ul li{
+    margin-top: 5px;
+}
+
+.msgDisplay .msgShow ul p{
+    width: 300px;
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+.msgDisplay .msgShow ul li>span{
+    display: flex;
+    place-content: center;
+}
+
+.msgDisplay .msgShow .userRight{
+    display: flex;
+    place-content: flex-end;
+}

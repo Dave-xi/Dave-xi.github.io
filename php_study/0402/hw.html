@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>留言板</title>
+    <link rel="stylesheet" href="hw.css" />
+    <link rel="stylesheet" href="static/css/iconfont.css" />
+  </head>
+  <body>
+    <!-- 演示区域 -->
+    <div class="showArea">
+      <!-- 在线客服头部 -->
+      <div class="title">
+        <button onclick="back()" title="返回">&lt;</button>
+        <span>在线客服</span>
+      </div>
+      <div class="displayArea">
+        <!-- 1.留言板图标 -->
+        <!-- 2.图标选中颜色变化 -->
+        <div class="msgIcon iconfont icon-kefu" onclick="showMsg()"></div>
+        <!-- 3.设置留言板样式 -->
+        <div class="msgDisplay">
+          <!-- 展示客户问题 -->
+          <div class="msgShow">
+            <ul class="msgShowList">
+
+            </ul>
+          </div>
+          <!-- 客户输入文本框 -->
+          <div class="msgInput">
+            <textarea
+              name="inputData"
+              id="inputData"
+              onkeydown="submitMsg(this)"
+              placeholder="请输入，按Enter直接发送消息"
+              autofocus
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showMsg() {
+        const msgIcon = document.querySelector(".msgIcon");
+        const title = document.querySelector(".title");
+        const msgDisplay = document.querySelector(".msgDisplay");
+        msgIcon.style.display = "none";
+        title.style.display = "block";
+        msgDisplay.style.display = "grid";
+      }
+      function back() {
+        const msgIcon = document.querySelector(".msgIcon");
+        const title = document.querySelector(".title");
+        const msgDisplay = document.querySelector(".msgDisplay");
+        title.style.display = "none";
+        msgDisplay.style.display = "none";
+        msgIcon.style.display = "block";
+      }
+      // 1. 独立完成留言板功能,要求使用CSS进行页面美化
+      // 2. (选做)将留言板功能升级为自动客服回复(定时器实现)
+      function submitMsg(ele) {
+        if (event.key === "Enter") {
+          //   判断是否输入为空
+          if (ele.value.trim() !== "") {
+            const ul = document.querySelector(".msgShowList");
+            const li = document.createElement("li");
+            li.innerHTML =
+              `<p>
+                    <img src="static/img/userProfilePicture.jpeg">` +
+              `<span>${ele.value.trim()}</span>
+                    </p>`;
+            ul.insertAdjacentElement("beforeEnd", li);
+            webpageMsg(ele.value.trim());
+          } else {
+            alert("输入有误，请重新输入！");
+          }
+          event.preventDefault();
+          ele.value = "";
+          ele.focus();
+        }
+      }
+      function webpageMsg(lo) {
+        const ul = document.querySelector(".msgShowList");
+        const li = document.createElement("li");
+        li.innerHTML = `<span>对方正在输入</span>`;
+        ul.insertAdjacentElement("beforeEnd", li);
+        setTimeout(function () {
+            if(lo==="天王盖地虎"){
+                li.innerHTML = `<p>
+                    <img src="static/img/webProfilePicture.jpg">` +
+              `<span>小鸡炖蘑菇</span>
+                    </p>`;
+                li.className="userRight";
+                ul.replaceChild(li,ul.lastChild);
+            }else if(lo==="12345"){
+                li.innerHTML = `<p>
+                    <img src="static/img/webProfilePicture.jpg">` +
+              `<span>上山打老虎</span>
+                    </p>`;
+                li.className="userRight";
+                ul.replaceChild(li,ul.lastChild);
+            }
+            else{
+                li.innerHTML = `<p>
+                    <img src="static/img/webProfilePicture.jpg">` +
+              `<span>口令不对再想想</span>
+                    </p>`;
+                li.className="userRight";
+                ul.replaceChild(li,ul.lastChild);
+            }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
